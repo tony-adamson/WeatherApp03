@@ -7,18 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02DD57AB2BDBB63A001F1546 /* UbuntuCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02DD57AA2BDBB338001F1546 /* UbuntuCondensed-Regular.ttf */; };
 		02FDF1672BDBA7DE0079DC85 /* WeatherApp03App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FDF1662BDBA7DE0079DC85 /* WeatherApp03App.swift */; };
 		02FDF1692BDBA7DE0079DC85 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FDF1682BDBA7DE0079DC85 /* ContentView.swift */; };
 		02FDF16B2BDBA7E00079DC85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FDF16A2BDBA7E00079DC85 /* Assets.xcassets */; };
 		02FDF16E2BDBA7E00079DC85 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FDF16D2BDBA7E00079DC85 /* Preview Assets.xcassets */; };
+		02FDF1762BDBADF30079DC85 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FDF1752BDBADF30079DC85 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02DD57AA2BDBB338001F1546 /* UbuntuCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UbuntuCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		02FDF1632BDBA7DE0079DC85 /* WeatherApp03.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp03.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02FDF1662BDBA7DE0079DC85 /* WeatherApp03App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp03App.swift; sourceTree = "<group>"; };
 		02FDF1682BDBA7DE0079DC85 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		02FDF16A2BDBA7E00079DC85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02FDF16D2BDBA7E00079DC85 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		02FDF1742BDBADCD0079DC85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		02FDF1752BDBADF30079DC85 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,9 +37,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02DD57A92BDBB326001F1546 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				02DD57AA2BDBB338001F1546 /* UbuntuCondensed-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		02FDF15A2BDBA7DE0079DC85 = {
 			isa = PBXGroup;
 			children = (
+				02FDF1752BDBADF30079DC85 /* Launch Screen.storyboard */,
 				02FDF1652BDBA7DE0079DC85 /* WeatherApp03 */,
 				02FDF1642BDBA7DE0079DC85 /* Products */,
 			);
@@ -51,9 +65,11 @@
 		02FDF1652BDBA7DE0079DC85 /* WeatherApp03 */ = {
 			isa = PBXGroup;
 			children = (
-				02FDF1662BDBA7DE0079DC85 /* WeatherApp03App.swift */,
+				02FDF1742BDBADCD0079DC85 /* Info.plist */,
 				02FDF1682BDBA7DE0079DC85 /* ContentView.swift */,
+				02FDF1662BDBA7DE0079DC85 /* WeatherApp03App.swift */,
 				02FDF16A2BDBA7E00079DC85 /* Assets.xcassets */,
+				02DD57A92BDBB326001F1546 /* Fonts */,
 				02FDF16C2BDBA7E00079DC85 /* Preview Content */,
 			);
 			path = WeatherApp03;
@@ -125,6 +141,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02DD57AB2BDBB63A001F1546 /* UbuntuCondensed-Regular.ttf in Resources */,
+				02FDF1762BDBADF30079DC85 /* Launch Screen.storyboard in Resources */,
 				02FDF16E2BDBA7E00079DC85 /* Preview Assets.xcassets in Resources */,
 				02FDF16B2BDBA7E00079DC85 /* Assets.xcassets in Resources */,
 			);
@@ -275,6 +293,7 @@
 				DEVELOPMENT_TEAM = 2L568N4PXS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherApp03/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +323,7 @@
 				DEVELOPMENT_TEAM = 2L568N4PXS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherApp03/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
