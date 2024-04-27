@@ -15,8 +15,17 @@ struct DetailsView: View {
                     .font(.custom("UbuntuCondensed-Regular", size: 24))
                 Spacer()
             }
-            DetailsParametrView()
+            VStack(spacing: 20) {
+                DetailsParametrView()
+                DetailsParametrView()
+                DetailsParametrView()
+                DetailsParametrView()
+                DetailsParametrView()
+                DetailsParametrView()
+            }
             .padding(.top, 30)
+            
+            Spacer()
         }
         .font(.custom("UbuntuCondensed-Regular", size: 18))
         .padding(.top, 50)

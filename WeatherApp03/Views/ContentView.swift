@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack() {
+        VStack {
             HStack {
                 // City row
                 VStack(alignment: .leading) {
@@ -32,12 +32,16 @@ struct ContentView: View {
             .background(.green.opacity(0.1))
             
             // Weather information
-            //MainInformationView()
-            
-            // Details
-            DetailsView()
-            
-            // Bottom spacer
+            TabView {
+                MainInformationView()
+                
+                DetailsView()
+                
+                ForecastView()
+            }
+            .tabViewStyle(.page)
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+           
             Spacer()
             
         }
