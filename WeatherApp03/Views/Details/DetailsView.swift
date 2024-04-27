@@ -29,7 +29,6 @@ struct DetailsView: View {
         }
         .font(.custom("UbuntuCondensed-Regular", size: 18))
         .padding(.top, 50)
-        .background(.green.opacity(0.1))
     }
 }
 

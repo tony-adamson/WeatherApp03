@@ -24,12 +24,12 @@ struct DailyForecastItem: View {
             VStack(spacing: 10) {
                 HStack {
                     Image(systemName: "arrow.down")
-                    Text("16\u{2103}")
+                    Text("16°C")
                 }
                 
                 HStack {
                     Image(systemName: "arrow.up")
-                    Text("26\u{2103}")
+                    Text("26°C")
                 }
             }
             .padding(.top, 10)

@@ -15,7 +15,6 @@ struct ForecastView: View {
                     .font(.custom("UbuntuCondensed-Regular", size: 24))
                 Spacer()
             }
-            .background(.green.opacity(0.1))
             
             // ROW 1 with horizontal scroll
             VStack(alignment: .leading) {
@@ -37,7 +36,6 @@ struct ForecastView: View {
                 .scrollIndicators(.hidden)
                 .padding(.top, 20)
             }
-            .background(.green.opacity(0.1))
             .padding(.top, 50)
             
             // ROW 2 with horizontal scroll
@@ -57,9 +55,9 @@ struct ForecastView: View {
                         DailyForecastItem()
                     }
                 }
+                .scrollIndicators(.hidden)
                 .padding(.top, 20)
             }
-            .background(.green.opacity(0.1))
             .padding(.top, 50)
             
             Spacer()

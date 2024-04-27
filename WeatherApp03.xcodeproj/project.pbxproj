@@ -13,9 +13,23 @@
 		027976442BDC212E003B25E8 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976432BDC212E003B25E8 /* ForecastView.swift */; };
 		027976462BDCA34E003B25E8 /* HourlyForecastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976452BDCA34E003B25E8 /* HourlyForecastItem.swift */; };
 		027976482BDCA35A003B25E8 /* DailyForecastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976472BDCA35A003B25E8 /* DailyForecastItem.swift */; };
+		0279764D2BDCAF9E003B25E8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279764C2BDCAF9E003B25E8 /* SettingsView.swift */; };
+		0279764F2BDCAFAF003B25E8 /* ChooseCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279764E2BDCAFAF003B25E8 /* ChooseCityView.swift */; };
+		027976512BDCC483003B25E8 /* CityItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976502BDCC482003B25E8 /* CityItemView.swift */; };
+		027976542BDCDA05003B25E8 /* IpAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976532BDCDA05003B25E8 /* IpAdress.swift */; };
+		027976582BDCDAE0003B25E8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 027976572BDCDAE0003B25E8 /* Alamofire */; };
+		0279765A2BDCDAE0003B25E8 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 027976592BDCDAE0003B25E8 /* AlamofireDynamic */; };
+		0279765C2BDCDBD5003B25E8 /* IpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279765B2BDCDBD5003B25E8 /* IpViewModel.swift */; };
+		0279765E2BDD01B1003B25E8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279765D2BDD01B1003B25E8 /* LocationManager.swift */; };
+		027976602BDD0704003B25E8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279765F2BDD0704003B25E8 /* OnboardingView.swift */; };
+		027976632BDD08EF003B25E8 /* AutoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976622BDD08EF003B25E8 /* AutoLocationView.swift */; };
+		027976652BDD0914003B25E8 /* ManualLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976642BDD0914003B25E8 /* ManualLocationView.swift */; };
+		027976682BDD0D76003B25E8 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976672BDD0D76003B25E8 /* Spinner.swift */; };
+		0279766A2BDD3B70003B25E8 /* ReverseGeocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976692BDD3B70003B25E8 /* ReverseGeocoding.swift */; };
+		0279766C2BDD3C91003B25E8 /* ReverseGeocodingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279766B2BDD3C91003B25E8 /* ReverseGeocodingModel.swift */; };
 		02DD57AB2BDBB63A001F1546 /* UbuntuCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02DD57AA2BDBB338001F1546 /* UbuntuCondensed-Regular.ttf */; };
 		02FDF1672BDBA7DE0079DC85 /* WeatherApp03App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FDF1662BDBA7DE0079DC85 /* WeatherApp03App.swift */; };
-		02FDF1692BDBA7DE0079DC85 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FDF1682BDBA7DE0079DC85 /* ContentView.swift */; };
+		02FDF1692BDBA7DE0079DC85 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FDF1682BDBA7DE0079DC85 /* AppView.swift */; };
 		02FDF16B2BDBA7E00079DC85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FDF16A2BDBA7E00079DC85 /* Assets.xcassets */; };
 		02FDF16E2BDBA7E00079DC85 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FDF16D2BDBA7E00079DC85 /* Preview Assets.xcassets */; };
 		02FDF1762BDBADF30079DC85 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FDF1752BDBADF30079DC85 /* Launch Screen.storyboard */; };
@@ -28,10 +42,22 @@
 		027976432BDC212E003B25E8 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		027976452BDCA34E003B25E8 /* HourlyForecastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastItem.swift; sourceTree = "<group>"; };
 		027976472BDCA35A003B25E8 /* DailyForecastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastItem.swift; sourceTree = "<group>"; };
+		0279764C2BDCAF9E003B25E8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0279764E2BDCAFAF003B25E8 /* ChooseCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityView.swift; sourceTree = "<group>"; };
+		027976502BDCC482003B25E8 /* CityItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityItemView.swift; sourceTree = "<group>"; };
+		027976532BDCDA05003B25E8 /* IpAdress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAdress.swift; sourceTree = "<group>"; };
+		0279765B2BDCDBD5003B25E8 /* IpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpViewModel.swift; sourceTree = "<group>"; };
+		0279765D2BDD01B1003B25E8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		0279765F2BDD0704003B25E8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		027976622BDD08EF003B25E8 /* AutoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLocationView.swift; sourceTree = "<group>"; };
+		027976642BDD0914003B25E8 /* ManualLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualLocationView.swift; sourceTree = "<group>"; };
+		027976672BDD0D76003B25E8 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		027976692BDD3B70003B25E8 /* ReverseGeocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocoding.swift; sourceTree = "<group>"; };
+		0279766B2BDD3C91003B25E8 /* ReverseGeocodingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodingModel.swift; sourceTree = "<group>"; };
 		02DD57AA2BDBB338001F1546 /* UbuntuCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UbuntuCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		02FDF1632BDBA7DE0079DC85 /* WeatherApp03.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp03.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02FDF1662BDBA7DE0079DC85 /* WeatherApp03App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp03App.swift; sourceTree = "<group>"; };
-		02FDF1682BDBA7DE0079DC85 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		02FDF1682BDBA7DE0079DC85 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		02FDF16A2BDBA7E00079DC85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02FDF16D2BDBA7E00079DC85 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		02FDF1742BDBADCD0079DC85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				027976582BDCDAE0003B25E8 /* Alamofire in Frameworks */,
+				0279765A2BDCDAE0003B25E8 /* AlamofireDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,10 +80,14 @@
 		0279763C2BDBEBF9003B25E8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				02FDF1682BDBA7DE0079DC85 /* ContentView.swift */,
+				02FDF1682BDBA7DE0079DC85 /* AppView.swift */,
+				0279764E2BDCAFAF003B25E8 /* ChooseCityView.swift */,
+				027976502BDCC482003B25E8 /* CityItemView.swift */,
+				0279764C2BDCAF9E003B25E8 /* SettingsView.swift */,
 				0279764A2BDCA4B4003B25E8 /* Details */,
 				027976492BDCA364003B25E8 /* Forecast */,
 				0279764B2BDCA4CF003B25E8 /* Main */,
+				027976612BDD0886003B25E8 /* Onboarding */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -85,6 +117,43 @@
 				0279763D2BDBEC87003B25E8 /* MainInformationView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		027976522BDCCDA3003B25E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				027976532BDCDA05003B25E8 /* IpAdress.swift */,
+				0279766B2BDD3C91003B25E8 /* ReverseGeocodingModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		027976552BDCDAA7003B25E8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0279765B2BDCDBD5003B25E8 /* IpViewModel.swift */,
+				0279765D2BDD01B1003B25E8 /* LocationManager.swift */,
+				027976692BDD3B70003B25E8 /* ReverseGeocoding.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		027976612BDD0886003B25E8 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0279765F2BDD0704003B25E8 /* OnboardingView.swift */,
+				027976622BDD08EF003B25E8 /* AutoLocationView.swift */,
+				027976642BDD0914003B25E8 /* ManualLocationView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		027976662BDD0D4A003B25E8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				027976672BDD0D76003B25E8 /* Spinner.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		02DD57A92BDBB326001F1546 /* Fonts */ = {
@@ -119,7 +188,10 @@
 				02FDF1662BDBA7DE0079DC85 /* WeatherApp03App.swift */,
 				02FDF16A2BDBA7E00079DC85 /* Assets.xcassets */,
 				02DD57A92BDBB326001F1546 /* Fonts */,
+				027976662BDD0D4A003B25E8 /* Helpers */,
+				027976522BDCCDA3003B25E8 /* Models */,
 				02FDF16C2BDBA7E00079DC85 /* Preview Content */,
+				027976552BDCDAA7003B25E8 /* ViewModels */,
 				0279763C2BDBEBF9003B25E8 /* Views */,
 			);
 			path = WeatherApp03;
@@ -149,6 +221,10 @@
 			dependencies = (
 			);
 			name = WeatherApp03;
+			packageProductDependencies = (
+				027976572BDCDAE0003B25E8 /* Alamofire */,
+				027976592BDCDAE0003B25E8 /* AlamofireDynamic */,
+			);
 			productName = WeatherApp03;
 			productReference = 02FDF1632BDBA7DE0079DC85 /* WeatherApp03.app */;
 			productType = "com.apple.product-type.application";
@@ -177,6 +253,9 @@
 				Base,
 			);
 			mainGroup = 02FDF15A2BDBA7DE0079DC85;
+			packageReferences = (
+				027976562BDCDAE0003B25E8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 02FDF1642BDBA7DE0079DC85 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -205,13 +284,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				027976512BDCC483003B25E8 /* CityItemView.swift in Sources */,
+				027976682BDD0D76003B25E8 /* Spinner.swift in Sources */,
+				0279766C2BDD3C91003B25E8 /* ReverseGeocodingModel.swift in Sources */,
+				0279766A2BDD3B70003B25E8 /* ReverseGeocoding.swift in Sources */,
 				0279763E2BDBEC87003B25E8 /* MainInformationView.swift in Sources */,
 				027976422BDC1F49003B25E8 /* DetailsView.swift in Sources */,
+				027976652BDD0914003B25E8 /* ManualLocationView.swift in Sources */,
+				027976602BDD0704003B25E8 /* OnboardingView.swift in Sources */,
 				027976402BDC1EA7003B25E8 /* DetailsParametrView.swift in Sources */,
+				0279764D2BDCAF9E003B25E8 /* SettingsView.swift in Sources */,
 				027976482BDCA35A003B25E8 /* DailyForecastItem.swift in Sources */,
-				02FDF1692BDBA7DE0079DC85 /* ContentView.swift in Sources */,
+				02FDF1692BDBA7DE0079DC85 /* AppView.swift in Sources */,
 				02FDF1672BDBA7DE0079DC85 /* WeatherApp03App.swift in Sources */,
+				0279765C2BDCDBD5003B25E8 /* IpViewModel.swift in Sources */,
+				027976542BDCDA05003B25E8 /* IpAdress.swift in Sources */,
+				0279765E2BDD01B1003B25E8 /* LocationManager.swift in Sources */,
 				027976442BDC212E003B25E8 /* ForecastView.swift in Sources */,
+				0279764F2BDCAFAF003B25E8 /* ChooseCityView.swift in Sources */,
+				027976632BDD08EF003B25E8 /* AutoLocationView.swift in Sources */,
 				027976462BDCA34E003B25E8 /* HourlyForecastItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,7 +443,6 @@
 				INFOPLIST_FILE = WeatherApp03/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -382,7 +472,6 @@
 				INFOPLIST_FILE = WeatherApp03/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -420,6 +509,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		027976562BDCDAE0003B25E8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire?tab=readme-ov-file#swift-package-manager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		027976572BDCDAE0003B25E8 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 027976562BDCDAE0003B25E8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		027976592BDCDAE0003B25E8 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 027976562BDCDAE0003B25E8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 02FDF15B2BDBA7DE0079DC85 /* Project object */;
 }

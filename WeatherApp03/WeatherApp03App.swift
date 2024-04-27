@@ -9,9 +9,25 @@ import SwiftUI
 
 @main
 struct WeatherApp03App: App {
+    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
+    
+    init() {
+        if isFirstLaunch {
+            print("Это первый запуск приложения после установки")
+            isFirstLaunch = false
+        } else {
+            print("Приложение уже запускалось ранее")
+        }
+    }
+
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isFirstLaunch {
+                AppView()
+            } else {
+                OnboardingView()
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ struct MainInformationView: View {
                 HStack(alignment: .bottom, spacing: 0) {
                     Text("22")
                         .font(.custom("UbuntuCondensed-Regular", size: 96))
-                    Text("\u{2103}")
+                    Text("°C")
                         .font(.custom("UbuntuCondensed-Regular", size: 36))
                         .padding(.bottom, 12)
                 }
@@ -27,13 +27,12 @@ struct MainInformationView: View {
                 HStack {
                     // Minimum temperature
                     Image(systemName: "arrow.down")
-                    Text("16\u{2103}")
+                    Text("16°C")
                     // Maximum temperature
                     Image(systemName: "arrow.up")
-                    Text("26\u{2103}")
+                    Text("26°C")
                 }
             }
-            .background(.green.opacity(0.1))
             
             // Weather block
             VStack {
@@ -46,7 +45,6 @@ struct MainInformationView: View {
                 Text("Light Drizzle")
                     .padding(.top, 20)
             }
-            .background(.green.opacity(0.1))
             
             // Sunrise and sunset
             HStack {
@@ -59,7 +57,6 @@ struct MainInformationView: View {
                 Image(systemName: "sunset")
                 Text("06:32 PM")
             }
-            .background(.green.opacity(0.1))
             
             Spacer()
         }
