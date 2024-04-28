@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct WeatherApp03App: App {
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
+    @State private var countriesAndCities = CountriesAndCities()
     
     init() {
         if isFirstLaunch {
@@ -27,6 +28,7 @@ struct WeatherApp03App: App {
                 AppView()
             } else {
                 OnboardingView()
+                    .environment(countriesAndCities)
             }
         }
     }
