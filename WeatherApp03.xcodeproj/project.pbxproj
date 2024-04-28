@@ -27,6 +27,10 @@
 		027976682BDD0D76003B25E8 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976672BDD0D76003B25E8 /* Spinner.swift */; };
 		0279766A2BDD3B70003B25E8 /* ReverseGeocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976692BDD3B70003B25E8 /* ReverseGeocoding.swift */; };
 		0279766C2BDD3C91003B25E8 /* ReverseGeocodingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279766B2BDD3C91003B25E8 /* ReverseGeocodingModel.swift */; };
+		027976732BDDF927003B25E8 /* CountrySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976722BDDF927003B25E8 /* CountrySelectView.swift */; };
+		027976782BDE073B003B25E8 /* countries+cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 027976772BDE073B003B25E8 /* countries+cities.json */; };
+		0279767A2BDE07DB003B25E8 /* CountriesCitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027976792BDE07DB003B25E8 /* CountriesCitiesModel.swift */; };
+		0279767C2BDE09D6003B25E8 /* CountriesAndCities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279767B2BDE09D6003B25E8 /* CountriesAndCities.swift */; };
 		02DD57AB2BDBB63A001F1546 /* UbuntuCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02DD57AA2BDBB338001F1546 /* UbuntuCondensed-Regular.ttf */; };
 		02FDF1672BDBA7DE0079DC85 /* WeatherApp03App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FDF1662BDBA7DE0079DC85 /* WeatherApp03App.swift */; };
 		02FDF1692BDBA7DE0079DC85 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FDF1682BDBA7DE0079DC85 /* AppView.swift */; };
@@ -54,6 +58,10 @@
 		027976672BDD0D76003B25E8 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		027976692BDD3B70003B25E8 /* ReverseGeocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocoding.swift; sourceTree = "<group>"; };
 		0279766B2BDD3C91003B25E8 /* ReverseGeocodingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeocodingModel.swift; sourceTree = "<group>"; };
+		027976722BDDF927003B25E8 /* CountrySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectView.swift; sourceTree = "<group>"; };
+		027976772BDE073B003B25E8 /* countries+cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "countries+cities.json"; sourceTree = "<group>"; };
+		027976792BDE07DB003B25E8 /* CountriesCitiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesCitiesModel.swift; sourceTree = "<group>"; };
+		0279767B2BDE09D6003B25E8 /* CountriesAndCities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAndCities.swift; sourceTree = "<group>"; };
 		02DD57AA2BDBB338001F1546 /* UbuntuCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UbuntuCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		02FDF1632BDBA7DE0079DC85 /* WeatherApp03.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp03.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02FDF1662BDBA7DE0079DC85 /* WeatherApp03App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp03App.swift; sourceTree = "<group>"; };
@@ -84,6 +92,7 @@
 				0279764E2BDCAFAF003B25E8 /* ChooseCityView.swift */,
 				027976502BDCC482003B25E8 /* CityItemView.swift */,
 				0279764C2BDCAF9E003B25E8 /* SettingsView.swift */,
+				027976712BDDF8F5003B25E8 /* Countries */,
 				0279764A2BDCA4B4003B25E8 /* Details */,
 				027976492BDCA364003B25E8 /* Forecast */,
 				0279764B2BDCA4CF003B25E8 /* Main */,
@@ -124,6 +133,7 @@
 			children = (
 				027976532BDCDA05003B25E8 /* IpAdress.swift */,
 				0279766B2BDD3C91003B25E8 /* ReverseGeocodingModel.swift */,
+				027976792BDE07DB003B25E8 /* CountriesCitiesModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -134,6 +144,7 @@
 				0279765B2BDCDBD5003B25E8 /* IpViewModel.swift */,
 				0279765D2BDD01B1003B25E8 /* LocationManager.swift */,
 				027976692BDD3B70003B25E8 /* ReverseGeocoding.swift */,
+				0279767B2BDE09D6003B25E8 /* CountriesAndCities.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -154,6 +165,22 @@
 				027976672BDD0D76003B25E8 /* Spinner.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		027976712BDDF8F5003B25E8 /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+				027976722BDDF927003B25E8 /* CountrySelectView.swift */,
+			);
+			path = Countries;
+			sourceTree = "<group>";
+		};
+		027976742BDE0700003B25E8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				027976772BDE073B003B25E8 /* countries+cities.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		02DD57A92BDBB326001F1546 /* Fonts */ = {
@@ -191,6 +218,7 @@
 				027976662BDD0D4A003B25E8 /* Helpers */,
 				027976522BDCCDA3003B25E8 /* Models */,
 				02FDF16C2BDBA7E00079DC85 /* Preview Content */,
+				027976742BDE0700003B25E8 /* Resources */,
 				027976552BDCDAA7003B25E8 /* ViewModels */,
 				0279763C2BDBEBF9003B25E8 /* Views */,
 			);
@@ -273,6 +301,7 @@
 				02DD57AB2BDBB63A001F1546 /* UbuntuCondensed-Regular.ttf in Resources */,
 				02FDF1762BDBADF30079DC85 /* Launch Screen.storyboard in Resources */,
 				02FDF16E2BDBA7E00079DC85 /* Preview Assets.xcassets in Resources */,
+				027976782BDE073B003B25E8 /* countries+cities.json in Resources */,
 				02FDF16B2BDBA7E00079DC85 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				027976512BDCC483003B25E8 /* CityItemView.swift in Sources */,
+				0279767C2BDE09D6003B25E8 /* CountriesAndCities.swift in Sources */,
 				027976682BDD0D76003B25E8 /* Spinner.swift in Sources */,
 				0279766C2BDD3C91003B25E8 /* ReverseGeocodingModel.swift in Sources */,
 				0279766A2BDD3B70003B25E8 /* ReverseGeocoding.swift in Sources */,
@@ -299,9 +329,11 @@
 				02FDF1672BDBA7DE0079DC85 /* WeatherApp03App.swift in Sources */,
 				0279765C2BDCDBD5003B25E8 /* IpViewModel.swift in Sources */,
 				027976542BDCDA05003B25E8 /* IpAdress.swift in Sources */,
+				0279767A2BDE07DB003B25E8 /* CountriesCitiesModel.swift in Sources */,
 				0279765E2BDD01B1003B25E8 /* LocationManager.swift in Sources */,
 				027976442BDC212E003B25E8 /* ForecastView.swift in Sources */,
 				0279764F2BDCAFAF003B25E8 /* ChooseCityView.swift in Sources */,
+				027976732BDDF927003B25E8 /* CountrySelectView.swift in Sources */,
 				027976632BDD08EF003B25E8 /* AutoLocationView.swift in Sources */,
 				027976462BDCA34E003B25E8 /* HourlyForecastItem.swift in Sources */,
 			);

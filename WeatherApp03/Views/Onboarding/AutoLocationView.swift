@@ -21,7 +21,7 @@ struct AutoLocationView: View {
                             .padding(.top, 10)
                         Text("Город: \(location.name)")
                             .font(.custom("UbuntuCondensed-Regular", size: 18))
-                        Text("Страна: \(location.country)")
+                        Text("Страна: \(location.fullName ?? "Loading...")")
                             .font(.custom("UbuntuCondensed-Regular", size: 18))
                     }
                 } else {
@@ -31,6 +31,24 @@ struct AutoLocationView: View {
                         .font(.custom("UbuntuCondensed-Regular", size: 18))
                         .foregroundStyle(.greyWeather)
                 }
+            }
+            
+            HStack {
+                NavigationLink {
+                    AppView()
+                } label: {
+                    Button(action: {}, label: {
+                        Text("Верно")
+                    })
+                }
+
+                NavigationLink {
+                    CountrySelectView()
+                } label: {
+                    Text("Не верно")
+                        .foregroundStyle(.red.opacity(0.7))
+                }
+
             }
         }
         .navigationBarBackButtonHidden(true)

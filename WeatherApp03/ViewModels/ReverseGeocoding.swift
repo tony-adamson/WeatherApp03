@@ -32,25 +32,46 @@ class ReverseGeocoding: ObservableObject {
     private func fetchCityAndCountry(latitude: Double, longitude: Double) {
         let urlString = "https://api.api-ninjas.com/v1/reversegeocoding?lat=\(latitude)&lon=\(longitude)"
         let apiKey = "xxHCX9c1efbgDHJwTVg7Fw==syH6guZA0f8HPH28"
-        
-        let headers: HTTPHeaders = [
-            "X-Api-Key": apiKey
-        ]
-        
+        let headers: HTTPHeaders = ["X-Api-Key": apiKey]
+
         AF.request(urlString, headers: headers)
             .publishDecodable(type: [ReverseGeocodingModel].self)
             .value()
             .receive(on: RunLoop.main)
+            .flatMap { [weak self] response -> AnyPublisher<ReverseGeocodingModel, AFError> in
+                guard let firstResult = response.first else {
+                    return Fail(error: AFError.explicitlyCancelled).eraseToAnyPublisher()
+                }
+                return self?.fetchFullCountryName(code: firstResult.country)
+                    .map { fullName in
+                        var result = firstResult
+                        result.fullName = fullName
+                        return result
+                    }
+                    .eraseToAnyPublisher() ?? Fail(error: AFError.explicitlyCancelled).eraseToAnyPublisher()
+            }
             .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
+                if case .failure(let error) = completion {
                     print("Error occurred: \(error)")
                 }
-            }, receiveValue: { [weak self] response in
-                self?.locationDetail = response.first
+            }, receiveValue: { [weak self] result in
+                self?.locationDetail = result
             })
             .store(in: &cancellables)
     }
+
+    
+    private func fetchFullCountryName(code: String) -> AnyPublisher<String, AFError> {
+        let urlString = "https://restcountries.com/v3.1/alpha/\(code.lowercased())"
+        return AF.request(urlString)
+            .publishDecodable(type: [CountryDetailsResponse].self)
+            .value()
+            .map { response in
+                response.first?.name.common ?? "Unknown"
+            }
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
+    }
+
+
 }

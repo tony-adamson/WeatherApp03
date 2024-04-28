@@ -14,4 +14,14 @@ struct ApiResponse: Codable {
 struct ReverseGeocodingModel: Codable {
     var name: String
     var country: String
+    var fullName: String?
 }
+
+struct CountryDetailsResponse: Codable {
+    let name: CountryName
+}
+
+struct CountryName: Codable {
+    let common: String
+}
+
