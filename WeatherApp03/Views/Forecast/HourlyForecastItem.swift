@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct HourlyForecastItem: View {
+    var timeOfWeather: String
+    var iconName: String
+    
     var body: some View {
         VStack {
             // Time text
-            Text("10:00")
+            Text(timeOfWeather)
                 .font(.custom("UbuntuCondensed-Regular", size: 12))
             
             // Weather icon
-            Image(systemName: "cloud.drizzle")
+            Image(systemName: iconName)
                 .font(.custom("UbuntuCondensed-Regular", size: 24))
                 .foregroundStyle(.black)
                 .padding(.top, 10)
@@ -24,5 +27,5 @@ struct HourlyForecastItem: View {
 }
 
 #Preview {
-    HourlyForecastItem()
+    HourlyForecastItem(timeOfWeather: "10:00", iconName: "cloud.drizzle")
 }

@@ -8,33 +8,19 @@
 import SwiftUI
 
 struct SelectorView: View {
-//    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
     @State private var countriesAndCities = CountriesAndCities()
     let persistenceController = PersistenceController.shared
     @EnvironmentObject var appSettings: AppSettings
     
-//    init() {
-//        if isFirstLaunch {
-//            print("Это первый запуск приложения после установки")
-//        } else {
-//            print("Приложение уже запускалось ранее")
-//        }
-//    }
-    
     var body: some View {
         if !appSettings.isFirstLaunch {
             AppView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         } else {
             OnboardingView()
+                .environment(countriesAndCities)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
-//        if !isFirstLaunch {
-//            AppView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//        } else {
-//            OnboardingView()
-//                .environment(countriesAndCities)
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//        }
     }
 }
 

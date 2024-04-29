@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ForecastView: View {
+    @EnvironmentObject var weatherVM: WeatherVM
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -23,14 +25,12 @@ struct ForecastView: View {
                     .foregroundStyle(.greyWeather)
                 ScrollView(.horizontal) {
                     HStack(spacing: 30) {
-                        HourlyForecastItem()
-                        HourlyForecastItem()
-                        HourlyForecastItem()
-                        HourlyForecastItem()
-                        HourlyForecastItem()
-                        HourlyForecastItem()
-                        HourlyForecastItem()
-                        HourlyForecastItem()
+                        ForEach(weatherVM.weatherDetail!.hourly, id: \.dt) { item in
+                            HourlyForecastItem(
+                                timeOfWeather: "\(Date.timeString(from: item.dt))",
+                                iconName: "\(item.weatherIconName)"
+                            )
+                        }
                     }
                 }
                 .scrollIndicators(.hidden)
@@ -45,14 +45,14 @@ struct ForecastView: View {
                     .foregroundStyle(.greyWeather)
                 ScrollView(.horizontal) {
                     HStack(spacing: 30) {
-                        DailyForecastItem()
-                        DailyForecastItem()
-                        DailyForecastItem()
-                        DailyForecastItem()
-                        DailyForecastItem()
-                        DailyForecastItem()
-                        DailyForecastItem()
-                        DailyForecastItem()
+                        ForEach(weatherVM.weatherDetail!.daily, id: \.dt) { item in
+                            DailyForecastItem(
+                                date: "\(Date.dateStringSmall(from: item.dt))",
+                                minTemp: item.temp.min,
+                                maxTemp: item.temp.max,
+                                iconName: "\(item.weatherIconName)"
+                            )
+                        }
                     }
                 }
                 .scrollIndicators(.hidden)
@@ -68,6 +68,12 @@ struct ForecastView: View {
     }
 }
 
-#Preview {
-    ForecastView()
+struct ForecastView_Previews: PreviewProvider {
+    static var previews: some View {
+        // Экземпляр WeatherVM с шаблонными данными
+        let weatherVM = WeatherVM(weatherDetail: weatherModelTempale, context: PersistenceController.preview.container.viewContext)
+        
+        return ForecastView()
+            .environmentObject(weatherVM)
+    }
 }

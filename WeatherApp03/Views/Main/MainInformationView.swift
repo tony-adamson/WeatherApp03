@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct MainInformationView: View {
+    @EnvironmentObject var weatherVM: WeatherVM
+    
     var body: some View {
         VStack(spacing: 50) {
             // Date and temperature
             VStack {
                 // Date now
-                Text("Friday, 25 December 2024")
+                Text("\(Date.dateString(from: weatherVM.weatherDetail!.current.dt))")
                 
                 // Actual temperature now
                 HStack(alignment: .bottom, spacing: 0) {
-                    Text("22")
+                    Text("\(weatherVM.weatherDetail!.current.temp, specifier: "%.1f")")
                         .font(.custom("UbuntuCondensed-Regular", size: 96))
                     Text("°C")
                         .font(.custom("UbuntuCondensed-Regular", size: 36))
@@ -27,10 +29,10 @@ struct MainInformationView: View {
                 VStack {
                     HStack(spacing: 20) {
                         // Feels like temperature
-                        Label("Feels like: 16°C", systemImage: "thermometer.variable.and.figure")
+                        Label("Feels like: \(weatherVM.weatherDetail!.current.feels_like, specifier: "%.1f")°C", systemImage: "thermometer.variable.and.figure")
                         
                         // Humidity
-                        Label("Humidity: 16 %", systemImage: "humidity")
+                        Label("Humidity: \(weatherVM.weatherDetail!.current.humidity) %", systemImage: "humidity")
                     }
                 }
             }
@@ -38,12 +40,12 @@ struct MainInformationView: View {
             // Weather block
             VStack {
                 // Weather icon
-                Image(systemName: "cloud.drizzle")
+                Image(systemName: "\(weatherVM.weatherDetail!.current.weatherIconName)")
                     .font(.custom("UbuntuCondensed-Regular", size: 128))
                     .foregroundStyle(.black)
                 
                 // Weather name
-                Text("Light Drizzle")
+                Text("\(weatherVM.weatherDetail!.current.weather[0].description.capitalized)")
                     .padding(.top, 20)
             }
             
@@ -51,12 +53,12 @@ struct MainInformationView: View {
             HStack {
                 //  Sunrise time today
                 Image(systemName: "sunrise")
-                Text("09:18 AM")
+                Text("\(Date.timeString(from: weatherVM.weatherDetail!.current.sunset))")
                     .padding(.trailing, 30)
                 
                 // Sunset time today
                 Image(systemName: "sunset")
-                Text("06:32 PM")
+                Text("\(Date.timeString(from: weatherVM.weatherDetail!.current.sunrise))")
             }
             
             Spacer()
@@ -67,6 +69,12 @@ struct MainInformationView: View {
     }
 }
 
-#Preview {
-    MainInformationView()
+struct MainInformationView_Previews: PreviewProvider {
+    static var previews: some View {
+        // Экземпляр WeatherVM с шаблонными данными
+        let weatherVM = WeatherVM(weatherDetail: weatherModelTempale, context: PersistenceController.preview.container.viewContext)
+        
+        return MainInformationView()
+            .environmentObject(weatherVM)
+    }
 }

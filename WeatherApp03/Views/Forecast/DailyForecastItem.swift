@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct DailyForecastItem: View {
+    var date: String
+    var minTemp: Double
+    var maxTemp: Double
+    var iconName: String
+    
     var body: some View {
         VStack {
             // Date text
-            Text("26 Dec")
+            Text(date)
                 .font(.custom("UbuntuCondensed-Regular", size: 12))
             
             // Weather image
-            Image(systemName: "cloud.drizzle")
+            Image(systemName: iconName)
                 .font(.custom("UbuntuCondensed-Regular", size: 24))
                 .foregroundStyle(.black)
                 .padding(.top, 10)
@@ -24,12 +29,12 @@ struct DailyForecastItem: View {
             VStack(spacing: 10) {
                 HStack {
                     Image(systemName: "arrow.down")
-                    Text("16°C")
+                    Text("\(minTemp, specifier: "%.0f")°C")
                 }
                 
                 HStack {
                     Image(systemName: "arrow.up")
-                    Text("26°C")
+                    Text("\(maxTemp, specifier: "%.0f")°C")
                 }
             }
             .padding(.top, 10)
@@ -40,5 +45,5 @@ struct DailyForecastItem: View {
 }
 
 #Preview {
-    DailyForecastItem()
+    DailyForecastItem(date: "26 Dec", minTemp: 16, maxTemp: 25, iconName: "cloud.drizzle")
 }

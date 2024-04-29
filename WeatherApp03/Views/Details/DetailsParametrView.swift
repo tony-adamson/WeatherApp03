@@ -8,20 +8,24 @@
 import SwiftUI
 
 struct DetailsParametrView: View {
+    var parametrName: String
+    var parametrCount: String
+    var parametrCh: String
+    
     var body: some View {
         VStack(alignment: .leading) {
             // Parameter name
-            Text("Precipitation")
+            Text("\(parametrName)")
                 .font(.custom("UbuntuCondensed-Regular", size: 12))
                 .foregroundStyle(.greyWeather)
             
             // Parameter value
-            Text("0.0mm")
+            Text("\(parametrCount) \(parametrCh)")
                 .font(.custom("UbuntuCondensed-Regular", size: 18))
         }
     }
 }
 
 #Preview {
-    DetailsParametrView()
+    DetailsParametrView(parametrName: "Precipitation", parametrCount: "10", parametrCh: "mm")
 }

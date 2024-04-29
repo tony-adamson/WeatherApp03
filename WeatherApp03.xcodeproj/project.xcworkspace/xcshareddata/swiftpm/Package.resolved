@@ -1,0 +1,15 @@
+{
+  "originHash" : "e4b73cd5c4453764ffed4ea408f78114174ce127b7e9a7cf7b3fe934bb407120",
+  "pins" : [
+    {
+      "identity" : "alamofire?tab=readme-ov-file#swift-package-manager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire?tab=readme-ov-file#swift-package-manager",
+      "state" : {
+        "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
+        "version" : "5.9.1"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -8,60 +8,46 @@
 import SwiftUI
 
 struct AppView: View {
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(
+        entity: City.entity(),
+        sortDescriptors: [],
+        predicate: NSPredicate(format: "isFavorite == YES")
+    ) var favoriteCities: FetchedResults<City>
+    @StateObject private var weatherVM = WeatherVM(context: PersistenceController.shared.container.viewContext)
+
     var body: some View {
+        let city = favoriteCities.first
         NavigationStack {
             VStack {
-                HStack {
-                    // City row
-                    VStack(alignment: .leading) {
-                        Text("Mumbai")
-                            .font(.custom("UbuntuCondensed-Regular", size: 18))
-                        Text("Current location")
-                            .font(.custom("UbuntuCondensed-Regular", size: 10))
-                            .foregroundStyle(.greyWeather)
-                    }
-                    Spacer()
-                    
-                    // Choose city
-                    NavigationLink(destination: {
-                        ChooseCityView()
-                    }, label: {
-                        Image(systemName: "map")
-                            .resizable()
-                            .frame(width: 21, height: 21)
-                        .foregroundStyle(.greyWeather)
-                    })
-                    
-                    // App settings
-                    NavigationLink {
-                        SettingsView()
-                    } label: {
-                        Image(systemName: "gearshape")
-                            .resizable()
-                            .frame(width: 21, height: 21)
-                            .foregroundStyle(.greyWeather)
-                    }
+                if weatherVM.isLoading {
+                    Spinner()
+                } else if let weather = weatherVM.weatherDetail {
+                    WeatherView(city: city)
+                } else {
+                    Text("Weather data is not available.")
                 }
-                
-                // Weather information
-                TabView {
-                    MainInformationView()
-                    
-                    DetailsView()
-                    
-                    ForecastView()
-                }
-                .tabViewStyle(.page)
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-               
-                Spacer()
-                
+            
             }
             .padding(30)
+            .onAppear {
+                if favoriteCities.isEmpty {
+                    print("No favorite cities.")
+                } else {
+                    weatherVM.loadFavoriteCityWeather()
+                }
+            }
         }
+        .environmentObject(weatherVM)
     }
 }
 
-#Preview {
-    AppView()
+struct AppView_Previews: PreviewProvider {
+    static var previews: some View {
+        // Экземпляр WeatherVM с шаблонными данными
+        let weatherVM = WeatherVM(weatherDetail: weatherModelTempale, context: PersistenceController.preview.container.viewContext)
+        
+        return AppView()
+            .environmentObject(weatherVM)
+    }
 }
