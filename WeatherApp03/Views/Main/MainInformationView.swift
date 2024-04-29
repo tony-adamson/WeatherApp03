@@ -24,13 +24,14 @@ struct MainInformationView: View {
                         .padding(.bottom, 12)
                 }
                 .foregroundStyle(.black)
-                HStack {
-                    // Minimum temperature
-                    Image(systemName: "arrow.down")
-                    Text("16°C")
-                    // Maximum temperature
-                    Image(systemName: "arrow.up")
-                    Text("26°C")
+                VStack {
+                    HStack(spacing: 20) {
+                        // Feels like temperature
+                        Label("Feels like: 16°C", systemImage: "thermometer.variable.and.figure")
+                        
+                        // Humidity
+                        Label("Humidity: 16 %", systemImage: "humidity")
+                    }
                 }
             }
             

@@ -14,6 +14,8 @@ class ReverseGeocoding: ObservableObject {
     @ObservedObject private var locationManager = LocationManager()
     var cancellables = Set<AnyCancellable>()
     @Published var locationDetail: ReverseGeocodingModel?
+    private var latitude: Double?
+    private var longitude: Double?
 
     init() {
         initiateGeocodingProcess()
@@ -24,6 +26,8 @@ class ReverseGeocoding: ObservableObject {
             .compactMap { $0 }
             .first()
             .sink { [weak self] location in
+                self?.latitude = location.coordinate.latitude
+                self?.longitude = location.coordinate.longitude
                 self?.fetchCityAndCountry(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             }
             .store(in: &cancellables)
@@ -72,6 +76,24 @@ class ReverseGeocoding: ObservableObject {
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
     }
+    
+    func saveLocationAsFavorite(isFavorite: Bool) {
+            guard let detail = locationDetail, let lat = latitude, let lon = longitude else {
+                print("Location data is not complete.")
+                return
+            }
+            let context = PersistenceController.shared.container.viewContext
+            let city = City(context: context)
+            city.name = detail.name
+            city.latitude = lat
+            city.longitude = lon
+            city.isFavorite = isFavorite
 
-
+            do {
+                try context.save()
+                print("City saved as favorite successfully.")
+            } catch {
+                print("Failed to save city: \(error)")
+            }
+        }
 }
