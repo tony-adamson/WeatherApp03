@@ -10,6 +10,7 @@ import SwiftUI
 struct AutoLocationView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject private var geoCoder = ReverseGeocoding()
+    @EnvironmentObject var appSettings: AppSettings
     
     var body: some View {
         VStack {
@@ -23,6 +24,30 @@ struct AutoLocationView: View {
                             .font(.custom("UbuntuCondensed-Regular", size: 18))
                         Text("Страна: \(location.fullName ?? "Loading...")")
                             .font(.custom("UbuntuCondensed-Regular", size: 18))
+                        
+                        HStack {
+                            NavigationLink {
+                                SelectorView()
+                            } label: {
+                                Button(action: {
+                                    geoCoder.saveLocationAsFavorite(isFavorite: true)
+                                    appSettings.completeOnboarding()
+                                    dismiss()
+                                }, label: {
+                                    Text("Верно")
+                                        .foregroundStyle(.green.opacity(0.7))
+                                })
+                            }
+                            NavigationLink {
+                                CountrySelectView()
+                            } label: {
+                                Text("Не верно")
+                                    .foregroundStyle(.red.opacity(0.7))
+                            }
+                            .padding(.leading, 100)
+                        }
+                        .padding(30)
+                        .font(.custom("UbuntuCondensed-Regular", size: 18))
                     }
                 } else {
                     Spinner()
@@ -31,24 +56,6 @@ struct AutoLocationView: View {
                         .font(.custom("UbuntuCondensed-Regular", size: 18))
                         .foregroundStyle(.greyWeather)
                 }
-            }
-            
-            HStack {
-                NavigationLink {
-                    AppView()
-                } label: {
-                    Button(action: {}, label: {
-                        Text("Верно")
-                    })
-                }
-
-                NavigationLink {
-                    CountrySelectView()
-                } label: {
-                    Text("Не верно")
-                        .foregroundStyle(.red.opacity(0.7))
-                }
-
             }
         }
         .navigationBarBackButtonHidden(true)

@@ -19,7 +19,7 @@ struct OnboardingView: View {
                     .foregroundStyle(.greyWeather)
                 
                 NavigationLink {
-                    ManualLocationView()
+                    CountrySelectView()
                 } label: {
                     Text("Самостоятельно")
                         .foregroundStyle(.blue.opacity(0.7))

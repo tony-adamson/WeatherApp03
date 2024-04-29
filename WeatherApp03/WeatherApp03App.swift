@@ -9,27 +9,32 @@ import SwiftUI
 
 @main
 struct WeatherApp03App: App {
-    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
-    @State private var countriesAndCities = CountriesAndCities()
+    @StateObject private var appSettings = AppSettings()
+//    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
+//    @State private var countriesAndCities = CountriesAndCities()
+//    let persistenceController = PersistenceController.shared
     
-    init() {
-        if isFirstLaunch {
-            print("Это первый запуск приложения после установки")
-            isFirstLaunch = false
-        } else {
-            print("Приложение уже запускалось ранее")
-        }
-    }
+//    init() {
+//        if isFirstLaunch {
+//            print("Это первый запуск приложения после установки")
+//        } else {
+//            print("Приложение уже запускалось ранее")
+//        }
+//    }
 
     
     var body: some Scene {
         WindowGroup {
-            if isFirstLaunch {
-                AppView()
-            } else {
-                OnboardingView()
-                    .environment(countriesAndCities)
-            }
+            SelectorView()
+                .environmentObject(appSettings)
+//            if !isFirstLaunch {
+//                AppView()
+//                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//            } else {
+//                OnboardingView()
+//                    .environment(countriesAndCities)
+//                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//            }
         }
     }
 }
