@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import _MapKit_SwiftUI
 
 struct CitySelectView: View {
     @Environment(\.dismiss) var dismiss
@@ -16,6 +17,8 @@ struct CitySelectView: View {
     
     @State private var showFavoritePrompt = false
     @State private var selectedCity: Cities?
+    
+//    @State private var position = MapCameraPosition.region(MKCoo)
     
     var citiesArray: [Cities]
     var countryName: String

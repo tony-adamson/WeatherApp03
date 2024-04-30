@@ -20,3 +20,14 @@ struct Cities: Hashable, Codable, Identifiable {
     var latitude: String
     var longitude: String
 }
+
+struct Coordinates {
+    var latitude: Double
+    var longitude: Double
+}
+
+struct CityMapKit {
+    var name: String?
+    var latitude: Double?
+    var longitude: Double?
+}

@@ -10,45 +10,82 @@ import MapKit
 
 struct CountrySelectView: View {
     @Environment(\.dismiss) var dismiss
-//    @Environment(CountriesAndCities.self) var countriesAndCities
+    
+    @EnvironmentObject var appSettings: AppSettings
+    @Environment(CountriesAndCities.self) var countriesAndCities
+    
     @StateObject private var viewModel = LocationSearchViewModel()
+    @StateObject private var saveCityModel = ChooseCityManuallyVM()
+    
+    @State private var showFavoritePrompt = false
+    @State private var selectedCity: String?
+    @State private var selectedCity2: CityMapKit?
     
     var body: some View {
         VStack {
-            List {
-                TextField("Search", text: $viewModel.searchQuery)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                if viewModel.searchResults.isEmpty {
-                    Text("No results found")
-                } else {
-                    ForEach(viewModel.searchResults, id: \.self) { result in
+            HStack {
+                Text("Select your country:")
+                    .font(.custom("UbuntuCondensed-Regular", size: 24))
+                Spacer()
+            }
+            ScrollView {
+                LazyVStack(alignment: .leading) {
+                    ForEach(countriesAndCities.countriesAndCities) { country in
                         NavigationLink {
-                            SelectorView()
+                            CitySelectView(
+                                citiesArray: country.cities,
+                                countryName: country.name
+                            )
                         } label: {
-                            Text(result.title)
+                            Text(country.name)
+                                .font(.custom("UbuntuCondensed-Regular", size: 18))
+                                .foregroundStyle(.greyWeather)
+                                .padding(.top, 10)
                         }
                     }
                 }
             }
-//            HStack {
-//                Text("Select your country:")
-//                    .font(.custom("UbuntuCondensed-Regular", size: 24))
-//                Spacer()
-//            }
-//            ScrollView {
-//                LazyVStack {
-//                    ForEach(countriesAndCities.countriesAndCities) { country in
+            
+//            List {
+//                TextField("Search", text: $viewModel.searchQuery)
+//                    .textFieldStyle(RoundedBorderTextFieldStyle())
+//
+//                if viewModel.searchResults.isEmpty {
+//                    Text("No results found")
+//                } else {
+//                    ForEach(viewModel.searchResults, id: \.self) { city in
 //                        NavigationLink {
-//                            CitySelectView(
-//                                citiesArray: country.cities,
-//                                countryName: country.name
-//                            )
+//                            SelectorView()
 //                        } label: {
-//                            Text(country.name)
-//                                .font(.custom("UbuntuCondensed-Regular", size: 18))
-//                                .foregroundStyle(.greyWeather)
-//                                .padding(.top, 10)
+//                            Button {
+//                                selectedCity2 = CityMapKit(name: city.title)
+//                                print(String(describing: selectedCity2?.name))
+////                                viewModel.getPlaceDetails(for: city) { result in
+////                                    switch result {
+////                                    case .success(let coordinate):
+////                                        print("Coordinates: \(coordinate)")
+////                                        selectedCity2?.latitude = coordinate.latitude
+////                                        selectedCity2?.longitude = coordinate.longitude
+////                                    case .failure(let error):
+////                                        print("Error: \(error.localizedDescription)")
+////                                    }
+////                                }
+//                                
+////                                if appSettings.isFirstLaunch {
+////                                    saveCityModel.saveManuallyLocationAsFavorite(
+////                                        name: (selectedCity2?.name)!,
+////                                        latitude: (selectedCity2?.latitude)!,
+////                                        longitude: (selectedCity2?.longitude)!,
+////                                        isFavorite: true
+////                                    )
+////                                    appSettings.completeOnboarding()
+////                                    dismiss()
+////                                } else {
+////                                    showFavoritePrompt = true
+////                                }
+//                            } label: {
+//                                Text(city.title)
+//                            }
 //                        }
 //                    }
 //                }
@@ -79,5 +116,5 @@ struct CountrySelectView: View {
 
 #Preview {
     CountrySelectView()
-//        .environment(CountriesAndCities())
+        .environment(CountriesAndCities())
 }

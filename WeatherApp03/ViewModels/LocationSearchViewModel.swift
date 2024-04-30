@@ -34,5 +34,24 @@ class LocationSearchViewModel: NSObject, ObservableObject, MKLocalSearchComplete
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         print("Error: \(error.localizedDescription)")
     }
+    
+    func getPlaceDetails(for completionMKLSC: MKLocalSearchCompletion, completion: @escaping (Result<Coordinates, Error>) -> Void) {
+        let searchRequest = MKLocalSearch.Request(completion: completionMKLSC)
+        let search = MKLocalSearch(request: searchRequest)
+        
+        search.start { response, error in
+            if let error = error {
+                completion(.failure(error)) // Ошибка сети или запроса
+                return
+            }
+            guard let placemark = response?.mapItems.first?.placemark else {
+                completion(.failure(NSError(domain: "com.yourdomain.app", code: 404, userInfo: [NSLocalizedDescriptionKey: "Location not found"])))
+                return
+            }
+            let coordinates = Coordinates(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude)
+            completion(.success(coordinates)) // Успешное получение координат
+        }
+    }
+
 }
 
