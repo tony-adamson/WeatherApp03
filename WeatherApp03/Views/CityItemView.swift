@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct CityItemView: View {
+    var city: City
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
-                Text("Mumbai")
+                Text(city.name ?? "Unknown City")
                     .font(.custom("UbuntuCondensed-Regular", size: 24))
                 Text("22°C")
                     .font(.custom("UbuntuCondensed-Regular", size: 18))
@@ -30,6 +32,6 @@ struct CityItemView: View {
     }
 }
 
-#Preview {
-    CityItemView()
-}
+//#Preview {
+//    CityItemView(city: City(entity: <#T##NSEntityDescription#>, insertInto: <#T##NSManagedObjectContext?#>))
+//}

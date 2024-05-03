@@ -14,7 +14,6 @@ struct CountrySelectView: View {
     @EnvironmentObject var appSettings: AppSettings
     @Environment(CountriesAndCities.self) var countriesAndCities
     
-    @StateObject private var viewModel = LocationSearchViewModel()
     @StateObject private var saveCityModel = ChooseCityManuallyVM()
     
     @State private var showFavoritePrompt = false
@@ -33,7 +32,7 @@ struct CountrySelectView: View {
                     ForEach(countriesAndCities.countriesAndCities) { country in
                         NavigationLink {
                             CitySelectView(
-                                citiesArray: country.cities,
+                                citySelectVM: CitySelectViewModel(cities: country.cities), citiesArray: country.cities,
                                 countryName: country.name
                             )
                         } label: {

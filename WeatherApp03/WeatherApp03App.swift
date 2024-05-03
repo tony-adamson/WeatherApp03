@@ -11,7 +11,7 @@ import SwiftUI
 struct WeatherApp03App: App {
     @StateObject private var appSettings = AppSettings()
 //    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
-//    @State private var countriesAndCities = CountriesAndCities()
+    @State private var countriesAndCities = CountriesAndCities()
 //    let persistenceController = PersistenceController.shared
     
 //    init() {
@@ -27,6 +27,7 @@ struct WeatherApp03App: App {
         WindowGroup {
             SelectorView()
                 .environmentObject(appSettings)
+                .environment(countriesAndCities)
 //            if !isFirstLaunch {
 //                AppView()
 //                    .environment(\.managedObjectContext, persistenceController.container.viewContext)

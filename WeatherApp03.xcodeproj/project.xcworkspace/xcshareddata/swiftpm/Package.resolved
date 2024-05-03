@@ -1,5 +1,5 @@
 {
-  "originHash" : "e4b73cd5c4453764ffed4ea408f78114174ce127b7e9a7cf7b3fe934bb407120",
+  "originHash" : "f81e11e1804291842050d91a89bb6c222788e8a9e2b88509942c0dadb957f06e",
   "pins" : [
     {
       "identity" : "alamofire?tab=readme-ov-file#swift-package-manager",

@@ -9,14 +9,19 @@ import SwiftUI
 
 struct ChooseCityView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) private var context
+
+    @FetchRequest(
+        entity: City.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \City.name, ascending: true)],
+        predicate: NSPredicate(format: "isFavorite == YES")
+    ) var cities: FetchedResults<City>
     
     var body: some View {
         VStack(spacing: 50) {
-            CityItemView()
-            
-            CityItemView()
-            
-            CityItemView()
+            ForEach(cities, id: \.self) { city in
+                CityItemView(city: city)
+            }
             
             Spacer()
         }
@@ -42,14 +47,12 @@ struct ChooseCityView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button(
-                    action: {},
-                    label: {
-                        Image(systemName: "plus")
-//                            .font(.custom("UbuntuCondensed-Regular", size: 18))
-                            .foregroundStyle(.greyWeather)
-                    }
-                )
+                NavigationLink {
+                    CountrySelectView()
+                } label: {
+                    Image(systemName: "plus")
+                        .foregroundStyle(.greyWeather)
+                }
             }
         }
     }

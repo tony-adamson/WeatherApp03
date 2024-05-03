@@ -10,16 +10,16 @@ import _MapKit_SwiftUI
 
 struct CitySelectView: View {
     @Environment(\.dismiss) var dismiss
-    
     @EnvironmentObject var appSettings: AppSettings
     
     @StateObject var viewModel = ChooseCityManuallyVM()
+    @StateObject var citySelectVM: CitySelectViewModel
     
     @State private var showFavoritePrompt = false
     @State private var selectedCity: Cities?
-    
-//    @State private var position = MapCameraPosition.region(MKCoo)
-    
+    @State private var search: String = ""
+    @State private var navigateToNextScreen = false
+
     var citiesArray: [Cities]
     var countryName: String
     
@@ -32,71 +32,46 @@ struct CitySelectView: View {
                 Spacer()
             }
             HStack {
-                Text("Select your city:")
-                    .font(.custom("UbuntuCondensed-Regular", size: 24))
-                Spacer()
-            }
-            .padding(.top)
-            ScrollView {
-                VStack(alignment: .leading) {
-                    ForEach(citiesArray) { city in
-                        NavigationLink {
-                            SelectorView()
-                        } label: {
-                            Button(
-                                action: {
-                                    selectedCity = city
-                                    if appSettings.isFirstLaunch {
-                                        viewModel.saveManuallyLocationAsFavorite(
-                                            name: city.name,
-                                            latitude: Double(city.latitude)!,
-                                            longitude: Double(city.longitude)!,
-                                            isFavorite: true
-                                        )
-                                        appSettings.completeOnboarding()
-                                        dismiss()
-                                    } else {
-                                        showFavoritePrompt = true
-                                    }
-                                },
-                                label: {
-                                    Text("\(city.name)")
-                                        .font(.custom("UbuntuCondensed-Regular", size: 18))
-                                        .foregroundStyle(.greyWeather)
-                                        .padding(.top, 10)
-                            })
-                        }
-
-                        
+                Image(systemName: "magnifyingglass")
+                TextField("Search for a city", text: $search)
+                    .autocorrectionDisabled()
+                    .onChange(of: search) {
+                        print(search)
+                        citySelectVM.searchCities(with: search)
+                        print(citySelectVM.filteredCities)
                     }
-                }
             }
+            .modifier(TextFieldGrayBackgroundColor())
+            .padding(.top)
+            
+            Spacer()
+            
+            List(citySelectVM.filteredCities, id: \.id) { city in
+                Text(city.name)
+                    .padding()
+                    .foregroundColor(.black)
+                    .onTapGesture {
+                        prepareAndNavigate(city: city)
+                    }
+            }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            
+            navigationDestination(for: String.self) { _ in
+                SelectorView()
+            }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
         }
         .alert(isPresented: $showFavoritePrompt) {
             Alert(
                 title: Text("Set as Favorite"),
                 message: Text("Would you like to set \(selectedCity?.name ?? "this city") as your favorite?"),
                 primaryButton: .default(Text("Yes"), action: {
-                    if let city = selectedCity {
-                        viewModel.saveManuallyLocationAsFavorite(
-                            name: city.name,
-                            latitude: Double(city.latitude)!,
-                            longitude: Double(city.longitude)!,
-                            isFavorite: true
-                        )
-                    }
-                    dismiss()
+                    saveCityAsFavorite(city: selectedCity, isFavorite: true)
                 }),
                 secondaryButton: .cancel(Text("No"), action: {
-                    if let city = selectedCity {
-                        viewModel.saveManuallyLocationAsFavorite(
-                            name: city.name,
-                            latitude: Double(city.latitude)!,
-                            longitude: Double(city.longitude)!,
-                            isFavorite: false
-                        )
-                    }
-                    dismiss()
+                    saveCityAsFavorite(city: selectedCity, isFavorite: false)
                 })
             )
         }
@@ -121,11 +96,46 @@ struct CitySelectView: View {
             }
         }
     }
+    
+    func prepareAndNavigate(city: Cities) {
+        selectedCity = city
+        if appSettings.isFirstLaunch {
+            saveCityAsFavorite(city: city, isFavorite: true)
+            appSettings.isFirstLaunch = false
+            navigateToNextScreen = true
+        } else {
+            showFavoritePrompt = true
+        }
+    }
+    
+    func saveCityAsFavorite(city: Cities?, isFavorite: Bool) {
+        guard let city = city else { return }
+        citySelectVM.saveLocationAsFavorite(
+            isFavorite: isFavorite,
+            latitude: Double(city.latitude) ?? 0,
+            longitude: Double(city.longitude) ?? 0,
+            cityName: city.name)
+        if !showFavoritePrompt {
+            navigateToNextScreen = true
+        }
+    }
+}
+
+struct TextFieldGrayBackgroundColor: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(12)
+            .background(.gray.opacity(0.1))
+            .cornerRadius(8)
+            .foregroundColor(.primary)
+            .font(.custom("UbuntuCondensed-Regular", size: 18))
+    }
 }
 
 #Preview {
     CitySelectView(
-        citiesArray: [
+        citySelectVM: CitySelectViewModel(
+            cities: [
                 Cities(
                     id: 5,
                     name: "Kabul",
@@ -144,7 +154,28 @@ struct CitySelectView: View {
                     latitude: "55.001",
                     longitude: "55.001"
                 )
-            ],
+            ]
+        ),
+        citiesArray: [
+            Cities(
+                id: 5,
+                name: "Kabul",
+                latitude: "55.001",
+                longitude: "55.001"
+            ),
+            Cities(
+                id: 2,
+                name: "Kabul",
+                latitude: "55.001",
+                longitude: "55.001"
+            ),
+            Cities(
+                id: 6,
+                name: "Kabul",
+                latitude: "55.001",
+                longitude: "55.001"
+            )
+        ],
         countryName: "Afganistan"
     )
         .environment(CountriesAndCities())
